@@ -1,35 +1,35 @@
 
 
-# <p align="center">epgrefresh Plugin for Enigma2 (E²) ![GitHub repo size](https://img.shields.io/github/repo-size/oe-alliance-plugins/epgrefresh.svg)</p>
+# <p align="center">EPGRefresh Plugin for Enigma2 (E²) ![GitHub repo size](https://img.shields.io/github/repo-size/oe-alliance-plugins/EPGRefresh.svg)</p>
 
 **Plugin to refresh EPG Data when Receiver is inactive**
 
 
 ## Github status
-[![Build](https://github.com/oe-alliance-plugins/epgrefresh/actions/workflows/buildbot.yml/badge.svg)](https://github.com/oe-alliance-plugins/epgrefresh/actions/workflows/buildbot.yml)
-[![Lint Status](https://github.com/oe-alliance-plugins/epgrefresh/actions/workflows/pylint.yml/badge.svg)](https://github.com/oe-alliance-plugins/epgrefresh/actions/workflows/pylint.yml)
-[![Ruff Status](https://github.com/oe-alliance-plugins/epgrefresh/actions/workflows/ruff.yml/badge.svg)](https://github.com/oe-alliance-plugins/epgrefresh/actions/workflows/ruff.yml)
-[![Build Status](https://github.com/oe-alliance-plugins/epgrefresh/actions/workflows/compile.yml/badge.svg)](https://github.com/oe-alliance-plugins/epgrefresh/actions/workflows/compile.yml)
-[![AUTOTAG](https://github.com/oe-alliance-plugins/epgrefresh/actions/workflows/autotag.yml/badge.svg)](https://github.com/oe-alliance-plugins/epgrefresh/actions/workflows/autotag.yml)
+[![Build](https://github.com/oe-alliance-plugins/EPGRefresh/actions/workflows/buildbot.yml/badge.svg)](https://github.com/oe-alliance-plugins/EPGRefresh/actions/workflows/buildbot.yml)
+[![Lint Status](https://github.com/oe-alliance-plugins/EPGRefresh/actions/workflows/pylint.yml/badge.svg)](https://github.com/oe-alliance-plugins/EPGRefresh/actions/workflows/pylint.yml)
+[![Ruff Status](https://github.com/oe-alliance-plugins/EPGRefresh/actions/workflows/ruff.yml/badge.svg)](https://github.com/oe-alliance-plugins/EPGRefresh/actions/workflows/ruff.yml)
+[![Build Status](https://github.com/oe-alliance-plugins/EPGRefresh/actions/workflows/compile.yml/badge.svg)](https://github.com/oe-alliance-plugins/EPGRefresh/actions/workflows/compile.yml)
+[![AUTOTAG](https://github.com/oe-alliance-plugins/EPGRefresh/actions/workflows/autotag.yml/badge.svg)](https://github.com/oe-alliance-plugins/EPGRefresh/actions/workflows/autotag.yml)
 
 
-[![Plugin Version](https://img.shields.io/github/v/tag/oe-alliance-plugins/epgrefresh?label=Latest%20Version&color=darkviolet)](https://github.com/oe-alliance-plugins/epgrefresh/tags)
-[![Latest Release](https://img.shields.io/github/release-date/oe-alliance-plugins/epgrefresh?label=From&color=darkviolet)](https://github.com/oe-alliance-plugins/epgrefresh/releases/latest)
-[![Github last commit](https://img.shields.io/github/last-commit/oe-alliance-plugins/epgrefresh)](https://github.com/oe-alliance-plugins/epgrefresh)
-[![GitHub Activity](https://img.shields.io/github/commit-activity/y/oe-alliance-plugins/epgrefresh.svg?label=commits)](https://github.com/oe-alliance-plugins/epgrefresh/commits)
-[![GitHub Activity](https://img.shields.io/github/commit-activity/m/oe-alliance-plugins/epgrefresh.svg?label=commits)](https://github.com/oe-alliance-plugins/epgrefresh/commits)
+[![Plugin Version](https://img.shields.io/github/v/tag/oe-alliance-plugins/EPGRefresh?label=Latest%20Version&color=darkviolet)](https://github.com/oe-alliance-plugins/EPGRefresh/tags)
+[![Latest Release](https://img.shields.io/github/release-date/oe-alliance-plugins/EPGRefresh?label=From&color=darkviolet)](https://github.com/oe-alliance-plugins/EPGRefresh/releases/latest)
+[![Github last commit](https://img.shields.io/github/last-commit/oe-alliance-plugins/EPGRefresh)](https://github.com/oe-alliance-plugins/EPGRefresh)
+[![GitHub Activity](https://img.shields.io/github/commit-activity/y/oe-alliance-plugins/EPGRefresh.svg?label=commits)](https://github.com/oe-alliance-plugins/EPGRefresh/commits)
+[![GitHub Activity](https://img.shields.io/github/commit-activity/m/oe-alliance-plugins/EPGRefresh.svg?label=commits)](https://github.com/oe-alliance-plugins/EPGRefresh/commits)
 
 ## SonarCloud status
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=oe-alliance-plugins_epgrefresh&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=oe-alliance-plugins_epgrefresh)
-[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=oe-alliance-plugins_epgrefresh&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=oe-alliance-plugins_epgrefresh)
-[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=oe-alliance-plugins_epgrefresh&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=oe-alliance-plugins_epgrefresh)
-[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=oe-alliance-plugins_epgrefresh&metric=bugs)](https://sonarcloud.io/summary/new_code?id=oe-alliance-plugins_epgrefresh)
-[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=oe-alliance-plugins_epgrefresh&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=oe-alliance-plugins_epgrefresh)
-[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=oe-alliance-plugins_epgrefresh&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=oe-alliance-plugins_epgrefresh)
-[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=oe-alliance-plugins_epgrefresh&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=oe-alliance-plugins_epgrefresh)
-[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=oe-alliance-plugins_epgrefresh&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=oe-alliance-plugins_epgrefresh)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=oe-alliance-plugins_EPGRefresh&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=oe-alliance-plugins_EPGRefresh)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=oe-alliance-plugins_EPGRefresh&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=oe-alliance-plugins_EPGRefresh)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=oe-alliance-plugins_EPGRefresh&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=oe-alliance-plugins_EPGRefresh)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=oe-alliance-plugins_EPGRefresh&metric=bugs)](https://sonarcloud.io/summary/new_code?id=oe-alliance-plugins_EPGRefresh)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=oe-alliance-plugins_EPGRefresh&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=oe-alliance-plugins_EPGRefresh)
+[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=oe-alliance-plugins_EPGRefresh&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=oe-alliance-plugins_EPGRefresh)
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=oe-alliance-plugins_EPGRefresh&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=oe-alliance-plugins_EPGRefresh)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=oe-alliance-plugins_EPGRefresh&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=oe-alliance-plugins_EPGRefresh)
 
-[![SonarQube Cloud](https://sonarcloud.io/images/project_badges/sonarcloud-light.svg)](https://sonarcloud.io/summary/new_code?id=oe-alliance-plugins_epgrefresh)
+[![SonarQube Cloud](https://sonarcloud.io/images/project_badges/sonarcloud-light.svg)](https://sonarcloud.io/summary/new_code?id=oe-alliance-plugins_EPGRefresh)
 
 ---
 
@@ -45,7 +45,7 @@ This plugin is released under GPLv3. See [LICENSE](https://www.gnu.org/licenses/
 
 ### 🤝 Contributing & Contact
 
-epgrefresh is created by users for users and we welcome every contribution. There are no highly paid developers. There are only users who have seen a problem and done their best to fix it. This means epgrefresh will always need the contributions of users like you. How can you get involved?
+EPGRefresh is created by users for users and we welcome every contribution. There are no highly paid developers. There are only users who have seen a problem and done their best to fix it. This means EPGRefresh will always need the contributions of users like you. How can you get involved?
 
 For questions or feedback, feel free and please open an issue or contribute with a Pull Request!
 
