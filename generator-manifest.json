@@ -1,0 +1,18 @@
+{
+  "branch": "main",
+  "depends_recipe": "",
+  "description_control": "Plugin to refresh EPG Data when Receiver is inactive",
+  "description_recipe": "Plugin to refresh EPG Data when Receiver is inactive",
+  "history_source_dir": "epgrefresh",
+  "internal_package_name": "enigma2-plugin-extensions-epgrefresh",
+  "module_dir_name": "EPGRefresh",
+  "output_subdir": "epgrefresh",
+  "package_name": "enigma2-plugin-extensions-epgrefresh",
+  "plugin_src_rel": "epgrefresh",
+  "python_package": "EPGRefresh",
+  "rdepends_recipe": "",
+  "replaces": "",
+  "repo_name": "epgrefresh",
+  "rrecommends": "",
+  "rreplaces": ""
+}
