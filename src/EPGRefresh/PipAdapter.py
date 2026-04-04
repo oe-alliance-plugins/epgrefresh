@@ -47,7 +47,7 @@ class PipAdapter:
 		# set pip size to 1 pixel
 		print("[EPGRefresh.PipAdapter.hidePiP]")
 		x = y = 0
-		w = h = 1
+		w = h = 1  # noqa: F841
 		self.session.pip.instance.move(ePoint(x, y))
 		self.session.pip.instance.resize(eSize(w, y))
 		self.session.pip["video"].instance.resize(eSize(w, y))

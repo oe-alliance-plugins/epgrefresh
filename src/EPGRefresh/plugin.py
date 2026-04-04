@@ -131,7 +131,7 @@ except ImportError:
 from Tools import Notifications
 try:
 	Notifications.notificationQueue.registerDomain(NOTIFICATIONDOMAIN, _("EPGREFRESH_NOTIFICATION_DOMAIN"), deferred_callable=True)
-except Exception as e:
+except Exception:
 	EPGRefreshNotificationKey = ""
 	# print("[EPGRefresh] Error registering Notification-Domain:", e)
 
@@ -299,7 +299,7 @@ def AdjustExtensionsmenu(enable, PlugDescriptor):
 	else:
 		try:
 			plugins.removePlugin(PlugDescriptor)
-		except ValueError as ve:
+		except ValueError:
 			if PlugDescriptor != extRunDescriptor:
 				print("[EPGRefresh] AdjustExtensionsmenu got confused, tried to remove non-existant plugin entry... ignoring.")
 

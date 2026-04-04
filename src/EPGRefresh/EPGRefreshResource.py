@@ -185,7 +185,7 @@ class EPGRefreshPreviewServicesResource(resource.Resource):
 			scanServices = epgrefresh.generateServicelist(epgrefresh.services[0], epgrefresh.services[1])
 
 		returnlist = ["<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<e2servicelist>"]
-		extend = returnlist.extend
+		# extend = returnlist.extend
 		for serviceref in scanServices:
 			ref = ServiceReference(str(serviceref))
 			returnlist.extend((
