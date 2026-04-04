@@ -7,7 +7,7 @@ from Tools import Notifications
 # Config
 from Components.config import config
 
-from . import _, STARTNOTIFICATIONID, NOTIFICATIONDOMAIN
+from . import _, STARTNOTIFICATIONID
 
 
 class MainPictureAdapter:

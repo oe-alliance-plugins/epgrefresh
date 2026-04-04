@@ -288,7 +288,7 @@ class EPGRefreshSettingsResource(resource.Resource):
 		canDoBackgroundRefresh = len(nimmanager.nim_slots) > 1
 		hasAutoTimer = False
 		try:
-			from Plugins.Extensions.AutoTimer.AutoTimer import AutoTimer
+			from Plugins.Extensions.AutoTimer.AutoTimer import AutoTimer  # noqa: F401
 			hasAutoTimer = True
 		except ImportError:
 			pass

@@ -1,5 +1,5 @@
 # -*- coding: UTF-8 -*-
-from __future__ import print_function, absolute_import
+from __future__ import absolute_import
 
 # To check if in Standby
 import Screens.Standby
@@ -38,10 +38,9 @@ from Components.config import config
 # MessageBox
 from Screens.MessageBox import MessageBox
 from Tools import Notifications
-from Tools.BoundFunction import boundFunction
 
 # ... II
-from . import _, ENDNOTIFICATIONID, NOTIFICATIONDOMAIN
+from . import _, ENDNOTIFICATIONID
 from .MainPictureAdapter import MainPictureAdapter
 from .PipAdapter import PipAdapter
 from .RecordAdapter import RecordAdapter

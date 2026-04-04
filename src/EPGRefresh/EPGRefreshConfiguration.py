@@ -1,15 +1,12 @@
 # -*- coding: UTF-8 -*-
-from __future__ import print_function, absolute_import
+from __future__ import absolute_import
 
 # for localized messages
 from . import _
 
 # GUI (Screens)
 from Screens.Screen import Screen
-from Screens.ChoiceBox import ChoiceBox
 from Components.ConfigList import ConfigListScreen
-from Components.config import KEY_OK
-from Screens.LocationBox import LocationBox
 from .EPGRefreshChannelEditor import EPGRefreshServiceEditor
 
 # GUI (Summary)
@@ -32,7 +29,6 @@ from Screens.MessageBox import MessageBox
 # Error-print()
 from traceback import print_exc
 from sys import stdout
-import os
 
 VERSION = "2.1.4"
 
@@ -180,7 +176,7 @@ class EPGRefreshConfiguration(ConfigListScreen, Screen, HelpableScreen):
 				self.list.append(getConfigListEntry(_("Flush EPG before refresh"), config.plugins.epgrefresh.erase, _("Enable this item to flush all EPG data before starting a new EPG refresh cycle"), False))
 				try:
 					# try to import autotimer module to check for its existence
-					from Plugins.Extensions.AutoTimer.AutoTimer import AutoTimer
+					from Plugins.Extensions.AutoTimer.AutoTimer import AutoTimer  # noqa: F401
 
 					self.list.append(getConfigListEntry(_("Inherit Services from AutoTimer"), config.plugins.epgrefresh.inherit_autotimer, _("Extend the list of services to refresh by those your AutoTimers use?"), True))
 					self.list.append(getConfigListEntry(_("Run AutoTimer after refresh"), config.plugins.epgrefresh.parse_autotimer, _("After a successful refresh the AutoTimer will automatically search for new matches if this is enabled. The options 'Ask*' has only affect on a manually refresh. If EPG-Refresh was called in background the default-Answer will be executed!"), False))

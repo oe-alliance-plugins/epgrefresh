@@ -1,5 +1,5 @@
 # -*- coding: UTF-8 -*-
-from __future__ import print_function, absolute_import
+from __future__ import absolute_import
 # for localized messages
 from . import _, NOTIFICATIONDOMAIN
 
