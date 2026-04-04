@@ -71,7 +71,7 @@ class OrderedSet(MutableSet):
     def __del__(self):
         self.clear()                    # remove circular references
 
-    union = lambda self, other: self.__or__(other)
+    union = lambda self, other: self.__or__(other)  # noqa: E731
 
 
 if __name__ == '__main__':

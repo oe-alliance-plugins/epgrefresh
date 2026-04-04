@@ -1,5 +1,5 @@
 # -*- coding: UTF-8 -*-
-from __future__ import print_function, absolute_import
+from __future__ import absolute_import
 
 from twisted.web import http, resource
 from .EPGRefresh import epgrefresh
@@ -12,14 +12,9 @@ from .OrderedSet import OrderedSet
 from ServiceReference import ServiceReference
 from Tools.XMLTools import stringToXML
 
-from six.moves.urllib.parse import unquote
+from urllib.parse import unquote
 import six
 
-
-try:
-	iteritems = lambda d: six.iteritems(d)
-except ImportError as ie:
-	iteritems = lambda d: d.items()
 
 API_VERSION = "1.4"
 
@@ -38,11 +33,11 @@ class EPGRefreshStartRefreshResource(resource.Resource):
 		req.setHeader('Content-type', 'application/xhtml+xml')
 		req.setHeader('charset', 'UTF-8')
 
-		return six.ensure_binary("""<?xml version=\"1.0\" encoding=\"UTF-8\" ?>
+		return f"""<?xml version=\"1.0\" encoding=\"UTF-8\" ?>
 <e2simplexmlresult>
- <e2state>%s</e2state>
- <e2statetext>%s</e2statetext>
-</e2simplexmlresult>""" % ('true' if state else 'false', output))
+ <e2state>{'true' if state else 'false'}</e2state>
+ <e2statetext>{output}</e2statetext>
+</e2simplexmlresult>""".encode()
 
 
 class EPGRefreshAddRemoveServiceResource(resource.Resource):
@@ -69,7 +64,7 @@ class EPGRefreshAddRemoveServiceResource(resource.Resource):
 			duration = req.args.get(b"duration", None)
 			try:
 				duration = duration and int(duration)
-			except ValueError as ve:
+			except ValueError:
 				output = 'invalid value for "duration": ' + str(duration)
 			else:
 				for _sref in req.args.get(b'sref'):
@@ -134,11 +129,11 @@ class EPGRefreshAddRemoveServiceResource(resource.Resource):
 		req.setHeader('Content-type', 'application/xhtml+xml')
 		req.setHeader('charset', 'UTF-8')
 
-		return six.ensure_binary("""<?xml version=\"1.0\" encoding=\"UTF-8\" ?>
+		return f"""<?xml version=\"1.0\" encoding=\"UTF-8\" ?>
 <e2simplexmlresult>
- <e2state>%s</e2state>
- <e2statetext>%s</e2statetext>
-</e2simplexmlresult> """ % ('True' if state else 'False', output))
+ <e2state>{'True' if state else 'False'}</e2state>
+ <e2statetext>{output}</e2statetext>
+</e2simplexmlresult> """.encode()
 
 
 class EPGRefreshListServicesResource(resource.Resource):
@@ -147,7 +142,7 @@ class EPGRefreshListServicesResource(resource.Resource):
 		req.setResponseCode(http.OK)
 		req.setHeader('Content-type', 'application/xhtml+xml')
 		req.setHeader('charset', 'UTF-8')
-		return six.ensure_binary(''.join(epgrefresh.buildConfiguration(webif=True)))
+		return ''.join(epgrefresh.buildConfiguration(webif=True)).encode()
 
 
 class EPGRefreshPreviewServicesResource(resource.Resource):
@@ -200,13 +195,13 @@ class EPGRefreshPreviewServicesResource(resource.Resource):
 				' </e2service>\n',
 			))
 		returnlist.append('\n</e2servicelist>')
-		return six.ensure_binary(''.join(returnlist))
+		return ''.join(returnlist).encode()
 
 
 class EPGRefreshChangeSettingsResource(resource.Resource):
 	def render(self, req):
 		statetext = "config changed."
-		for _key, _value in iteritems(req.args):
+		for _key, _value in req.args.items():
 			value = six.ensure_str(_value[0])
 			key = six.ensure_str(_key)
 			if key == "enabled":
@@ -264,11 +259,11 @@ class EPGRefreshChangeSettingsResource(resource.Resource):
 		req.setHeader('Content-type', 'application/xhtml+xml')
 		req.setHeader('charset', 'UTF-8')
 
-		return six.ensure_binary("""<?xml version=\"1.0\" encoding=\"UTF-8\" ?>
+		return f"""<?xml version=\"1.0\" encoding=\"UTF-8\" ?>
 <e2simplexmlresult>
  <e2state>true</e2state>
- <e2statetext>%s</e2statetext>
-</e2simplexmlresult>""" % (statetext,))
+ <e2statetext>{statetext}</e2statetext>
+</e2simplexmlresult>""".encode()
 
 
 class EPGRefreshSettingsResource(resource.Resource):
@@ -277,7 +272,7 @@ class EPGRefreshSettingsResource(resource.Resource):
 		req.setHeader('Content-type', 'application/xhtml+xml')
 		req.setHeader('charset', 'UTF-8')
 
-		from time import time, localtime, mktime
+		from time import localtime, mktime
 		now = localtime()
 		begin_h = config.plugins.epgrefresh.begin.value
 		begin = int(mktime((
@@ -295,95 +290,77 @@ class EPGRefreshSettingsResource(resource.Resource):
 		try:
 			from Plugins.Extensions.AutoTimer.AutoTimer import AutoTimer
 			hasAutoTimer = True
-		except ImportError as ie:
+		except ImportError:
 			pass
 
-		return six.ensure_binary("""<?xml version=\"1.0\" encoding=\"UTF-8\" ?>
+		return f"""<?xml version=\"1.0\" encoding=\"UTF-8\" ?>
 <e2settings>
  <e2setting>
   <e2settingname>config.plugins.epgrefresh.enabled</e2settingname>
-  <e2settingvalue>%s</e2settingvalue>
+  <e2settingvalue>{config.plugins.epgrefresh.enabled.value}</e2settingvalue>
  </e2setting>
  <e2setting>
   <e2settingname>config.plugins.epgrefresh.enablemessage</e2settingname>
-  <e2settingvalue>%s</e2settingvalue>
+  <e2settingvalue>{config.plugins.epgrefresh.enablemessage.value}</e2settingvalue>
  </e2setting>
  <e2setting>
   <e2settingname>config.plugins.epgrefresh.begin</e2settingname>
-  <e2settingvalue>%d</e2settingvalue>
+  <e2settingvalue>{begin}</e2settingvalue>
  </e2setting>
  <e2setting>
   <e2settingname>config.plugins.epgrefresh.end</e2settingname>
-  <e2settingvalue>%d</e2settingvalue>
+  <e2settingvalue>{end}</e2settingvalue>
  </e2setting>
  <e2setting>
   <e2settingname>config.plugins.epgrefresh.interval_seconds</e2settingname>
-  <e2settingvalue>%d</e2settingvalue>
+  <e2settingvalue>{config.plugins.epgrefresh.interval_seconds.value}</e2settingvalue>
  </e2setting>
  <e2setting>
   <e2settingname>config.plugins.epgrefresh.delay_standby</e2settingname>
-  <e2settingvalue>%d</e2settingvalue>
+  <e2settingvalue>{config.plugins.epgrefresh.delay_standby.value}</e2settingvalue>
  </e2setting>
  <e2setting>
   <e2settingname>config.plugins.epgrefresh.inherit_autotimer</e2settingname>
-  <e2settingvalue>%s</e2settingvalue>
+  <e2settingvalue>{config.plugins.epgrefresh.inherit_autotimer.value}</e2settingvalue>
  </e2setting>
  <e2setting>
   <e2settingname>config.plugins.epgrefresh.afterevent</e2settingname>
-  <e2settingvalue>%s</e2settingvalue>
+  <e2settingvalue>{config.plugins.epgrefresh.afterevent.value}</e2settingvalue>
  </e2setting>
  <e2setting>
   <e2settingname>config.plugins.epgrefresh.force</e2settingname>
-  <e2settingvalue>%s</e2settingvalue>
+  <e2settingvalue>{config.plugins.epgrefresh.force.value}</e2settingvalue>
  </e2setting>
  <e2setting>
   <e2settingname>config.plugins.epgrefresh.wakeup</e2settingname>
-  <e2settingvalue>%s</e2settingvalue>
+  <e2settingvalue>{config.plugins.epgrefresh.wakeup.value}</e2settingvalue>
  </e2setting>
  <e2setting>
   <e2settingname>config.plugins.epgrefresh.parse_autotimer</e2settingname>
-  <e2settingvalue>%s</e2settingvalue>
+  <e2settingvalue>{config.plugins.epgrefresh.parse_autotimer.value}</e2settingvalue>
  </e2setting>
  <e2setting>
   <e2settingname>config.plugins.epgrefresh.lastscan</e2settingname>
-  <e2settingvalue>%d</e2settingvalue>
+  <e2settingvalue>{config.plugins.epgrefresh.lastscan.value}</e2settingvalue>
  </e2setting>
  <e2setting>
   <e2settingname>config.plugins.epgrefresh.adapter</e2settingname>
-  <e2settingvalue>%s</e2settingvalue>
+  <e2settingvalue>{config.plugins.epgrefresh.adapter.value}</e2settingvalue>
  </e2setting>
  <e2setting>
   <e2settingname>config.plugins.epgrefresh.skipProtectedServices</e2settingname>
-  <e2settingvalue>%s</e2settingvalue>
+  <e2settingvalue>{config.plugins.epgrefresh.skipProtectedServices.value}</e2settingvalue>
  </e2setting>
  <e2setting>
   <e2settingname>canDoBackgroundRefresh</e2settingname>
-  <e2settingvalue>%s</e2settingvalue>
+  <e2settingvalue>{canDoBackgroundRefresh}</e2settingvalue>
  </e2setting>
  <e2setting>
   <e2settingname>hasAutoTimer</e2settingname>
-  <e2settingvalue>%s</e2settingvalue>
+  <e2settingvalue>{hasAutoTimer}</e2settingvalue>
  </e2setting>
  <e2setting>
   <e2settingname>api_version</e2settingname>
-  <e2settingvalue>%s</e2settingvalue>
+  <e2settingvalue>{API_VERSION}</e2settingvalue>
  </e2setting>
-</e2settings>""" % (
-				config.plugins.epgrefresh.enabled.value,
-				config.plugins.epgrefresh.enablemessage.value,
-				begin,
-				end,
-				config.plugins.epgrefresh.interval_seconds.value,
-				config.plugins.epgrefresh.delay_standby.value,
-				config.plugins.epgrefresh.inherit_autotimer.value,
-				config.plugins.epgrefresh.afterevent.value,
-				config.plugins.epgrefresh.force.value,
-				config.plugins.epgrefresh.wakeup.value,
-				config.plugins.epgrefresh.parse_autotimer.value,
-				config.plugins.epgrefresh.lastscan.value,
-				config.plugins.epgrefresh.adapter.value,
-				config.plugins.epgrefresh.skipProtectedServices.value,
-				canDoBackgroundRefresh,
-				hasAutoTimer,
-				API_VERSION,
-			))
+</e2settings>""".encode()
